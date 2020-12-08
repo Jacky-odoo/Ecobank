@@ -55,7 +55,7 @@ class InventorySubtractionLine(models.Model):
     def compute_name(self):
         for rec in self:
             if rec.item_id and rec.reference:
-                rec.name = str(rec.item_id.name)+" ( "+str(rec.reference)+" )"
+                rec.name = str(rec.item_id.name) + " ( " + str(rec.reference) + " )"
             else:
                 rec.name = rec.reference or rec.item_id.name
 
@@ -78,10 +78,10 @@ class InventorySubtractionLine(models.Model):
                         for line in inventory_additions:
                             if line.date > rec.date:
                                 raise ValidationError("Validation Error! Date Mismatch! "
-                                          "There were no items available for %s as at the date %s you specified "
-                                          " Error code INV001" % (rec.item_id.name, rec.date))
+                                                      "There were no items available for %s as at the date %s you specified "
+                                                      " Error code INV001" % (rec.item_id.name, rec.date))
 
-                    if len(inventory_additions) == 2:
+                    if len(inventory_additions) > 1:
                         flag = False
 
                         for line in inventory_additions:
@@ -89,16 +89,17 @@ class InventorySubtractionLine(models.Model):
                                 flag = True
                         if flag:
                             raise ValidationError("Validation Error! Date Mismatch! "
-                                          "There were no items available for %s as at the date %s you specified "
-                                          " Error code INV001" % (rec.item_id.name, rec.date))
+                                                  "There were no items available for %s as at the date %s you specified "
+                                                  " Error code INV001" % (rec.item_id.name, rec.date))
                     if rec.item_id.removal_method == 'fifo':
                         lines = sorted(inventory_additions, key=lambda x: x.date)
                     else:
                         lines = sorted(inventory_additions, key=lambda x: x.date, reverse=True)
                     if rec.quantity > sum(inventory_additions.mapped('quantity_remaining')):
-                        raise ValidationError('Error code INV002. There is not enough items left for '+str(rec.item_id.name) +
-                                              ' Total Remaining Balance for '+str(rec.item_id.name)+' is '+
-                                              str(sum(inventory_additions.mapped('quantity_remaining'))))
+                        raise ValidationError(
+                            'Error code INV002. There is not enough items left for ' + str(rec.item_id.name) +
+                            ' Total Remaining Balance for ' + str(rec.item_id.name) + ' is ' +
+                            str(sum(inventory_additions.mapped('quantity_remaining'))))
                     else:
                         while amount > 0:
                             for addition in lines:
@@ -130,9 +131,9 @@ class InventorySubtractionLine(models.Model):
                                 flag = True
                         if flag:
                             raise ValidationError("Validation Error! Date Mismatch! "
-                                          "There were no items available for %s as at the date %s you specified "
-                                          " Error code INV001" % (rec.item_id.name, rec.date))
-                    if len(inventory_additions) >= 2:
+                                                  "There were no items available for %s as at the date %s you specified "
+                                                  " Error code INV001" % (rec.item_id.name, rec.date))
+                    if len(inventory_additions) > 1:
                         flag = False
                         for line in inventory_additions:
                             if line.quantity_remaining >= rec.quantity:
@@ -142,8 +143,8 @@ class InventorySubtractionLine(models.Model):
                                 flag = True
                         if flag:
                             raise ValidationError("Validation Error! Date Mismatch! "
-                                          "There were no items available for %s as at the date %s you specified "
-                                          " Error code INV001" % (rec.item_id.name, rec.date))
+                                                  "There were no items available for %s as at the date %s you specified "
+                                                  " Error code INV001" % (rec.item_id.name, rec.date))
                     if rec.quantity > sum(inventory_additions.mapped('quantity_remaining')):
                         raise ValidationError(
                             'Error code INV002. There is not enough items left for ' + str(rec.item_id.name) +

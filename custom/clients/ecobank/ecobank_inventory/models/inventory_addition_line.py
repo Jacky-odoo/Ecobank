@@ -54,7 +54,7 @@ class InventoryAdditionLine(models.Model):
                 raise ValidationError("You cannot delete an item receipt that has been confirmed. Error Code BYT004")
             else:
                 return super(InventoryAdditionLine, self).unlink()
-
+    """
     @api.constrains('quantity')
     def validation(self):
         count = self.search([('item_id', '=', self.item_id.id), ('quantity_remaining', '>', 0)])
@@ -62,6 +62,7 @@ class InventoryAdditionLine(models.Model):
             raise ValidationError("You cannot have more than two "
                                   "Inventory receipt batch with remaining balances greater than 0."
                                   "Make sure you exhaust the existing balances first. Error Code INV009")
+                                  """
 
     @api.depends('item_id', 'reference')
     @api.multi

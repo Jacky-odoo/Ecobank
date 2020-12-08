@@ -97,14 +97,14 @@ class InventorySubtraction(models.Model):
                 grouped_lines[item] = sorted(item_lines, key=lambda x: x.date)
         # lets loop through the grouped items
         for item_id in grouped_lines:
-            first_item = grouped_lines[item_id][0]
+            item_line = grouped_lines[item_id]
             inventory_additions = self.env['inventory.addition.line'].search([('quantity_remaining', '>', 0),
-                                                                              ('date', '<=', first_item.date),
-                                                                              ('item_id', '=', item_id.id)])
+                                                                              ('date', '<=', item_line[0].date),
+                                                                              ('item_id', '=', item_line[0].item_id.id)])
             if not inventory_additions:
                 raise ValidationError("Validation Error! "
                                       "There are no items available for %s "
-                                      " Error code INV010" % item_id.name)
+                                      " Error code INV010" % item_id[0].item_id.name)
             total_items_count = sum([item.quantity for item in grouped_lines[item_id]])
             if inventory_additions:
                 items_available = sum(inventory_additions.mapped('quantity_remaining'))
@@ -113,12 +113,27 @@ class InventorySubtraction(models.Model):
                                            "You are trying to Issue a total of %s %s but there's only %s available"
                                            " Error code INV011" % (total_items_count, item_id.name, items_available))
                 # lets virtually subtract and see it it will be enough
-            if len(inventory_additions) == 2:
+            for item in grouped_lines[item_id]:
+                additions_as_at_item_date = self.env['inventory.addition.line'].search([('quantity_remaining', '>', 0),
+                                                                              ('date', '<=', item.date),
+                                                                              ('item_id', '=', item.item_id.id)])
+                if not additions_as_at_item_date:
+                    raise ValidationError("Validation Error! "
+                                          "There are no items available for %s as at %s"
+                                          " Error code INV010" % (item.name, item.date))
+                if sum(additions_as_at_item_date.mapped('quantity_remaining')) < item.quantity:
+                    raise fields.UserError("Items Available not enough for items being issued.")
+            """
+                    
+                    
+            if len(inventory_additions) > 1:
                 inventory_additions = sorted(inventory_additions, key=lambda x: x.date)
                 first_additions = inventory_additions[0]
                 second_additions = inventory_additions[-1]
                 first_items = filter(lambda x: first_additions.date <= x.date < second_additions.date, grouped_lines[item_id])
                 second_items = filter(lambda x: second_additions.date <= x.date < second_additions.date, grouped_lines[item_id])
+
+
                 if first_items and second_items:
                     first_items_count = sum(first_items.mapped('quantity'))
                     second_items_count = sum(second_items.mapped('quantity'))
@@ -137,3 +152,4 @@ class InventorySubtraction(models.Model):
                                                " Error code INV011" % (
                                                    second_items_count, second_items[0].date, second_items[-1].date,
                                                    second_additions.quantity_remaining))
+            """

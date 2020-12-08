@@ -160,7 +160,7 @@ class InventoryItem(models.Model):
                 if len(sorted_receipts) == 1:
                     average_cost = sorted_receipts[0].cost
                     current_value = average_cost * sorted_receipts[0].quantity_remaining
-                elif len(sorted_receipts)>1:
+                elif len(sorted_receipts) > 1:
                     if rec.valuation_method == 'fifo':
                         average_cost = sorted_receipts[0].cost
                         current_value = average_cost * sum(receipts.mapped('quantity_remaining'))

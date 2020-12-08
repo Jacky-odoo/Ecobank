@@ -1,4 +1,4 @@
-define([], function () { // ODOO: remove error from Byte  ERP define
+define([], function () { // ODOO: remove error from Byte Erp define
   var HelpDialog = function (handler) {
     /**
      * show help dialog

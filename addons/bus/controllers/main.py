@@ -32,7 +32,8 @@ class BusController(Controller):
         if options is None:
             options = {}
         if not dispatch:
-            raise Exception("bus.Bus unavailable")
+            return False
+            # raise Exception("bus.Bus unavailable")
         if [c for c in channels if not isinstance(c, basestring)]:
             raise Exception("bus.Bus only string channels are allowed.")
         if request.registry.in_test_mode():

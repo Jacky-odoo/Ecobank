@@ -4,8 +4,8 @@
 {
     'name': 'Password Encryption',
     'version': '2.0',
-    'author': ['Byte  ERP SA', 'FS3'],
-    'maintainer': 'Byte  ERP SA',
+    'author': ['Byte Erp SA', 'FS3'],
+    'maintainer': 'Byte Erp SA',
     'category': 'Extra Tools',
     'description': """
 Encrypted passwords

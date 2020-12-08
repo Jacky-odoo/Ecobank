@@ -272,7 +272,7 @@ var DashboardShare = Widget.extend({
         this.data = data;
         this.parent = parent;
         this.share_url = 'https://www.byteltd.com.com';
-        this.share_text = encodeURIComponent("I am using #Byte  ERP - Awesome open source business apps.");
+        this.share_text = encodeURIComponent("I am using #Byte Erp - Awesome open source business apps.");
     },
 
     share_twitter: function(){

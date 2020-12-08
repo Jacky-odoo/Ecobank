@@ -793,8 +793,8 @@ class MailThread(models.AbstractModel):
         self.ensure_one()
         database_uuid = self.env['ir.config_parameter'].get_param('database.uuid')
         return {'headers': repr({
-            'X-Byte  ERP-Objects': "%s-%s" % (self._name, self.id),
-            'X-Byte  ERP-db-uuid': database_uuid
+            'X-Byte Erp-Objects': "%s-%s" % (self._name, self.id),
+            'X-Byte Erp-db-uuid': database_uuid
         })}
 
     @api.multi

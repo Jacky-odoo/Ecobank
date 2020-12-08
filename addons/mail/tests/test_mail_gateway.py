@@ -611,7 +611,7 @@ class TestMailgateway(TestMail):
                           msg_id='<1198923581.41972151344608186802.JavaMail.diff1@agrolait.com>')
 
         # when 6.1 messages are present, compat mode is available
-        # Byte  ERP 10 update: compat mode has been removed and should not work anymore
+        # Byte Erp 10 update: compat mode has been removed and should not work anymore
         self.fake_email.write({'message_id': False})
         # Do: compat mode accepts partial-matching emails
         self.assertRaises(
@@ -623,7 +623,7 @@ class TestMailgateway(TestMail):
             extra='In-Reply-To: <12321321-openerp-%d-mail.channel@%s>' % (self.group_public.id, socket.gethostname()))
 
         # 3''. 6.1 compat mode should not work if hostname does not match!
-        # Byte  ERP 10 update: compat mode has been removed and should not work anymore and does not depend from hostname
+        # Byte Erp 10 update: compat mode has been removed and should not work anymore and does not depend from hostname
         self.assertRaises(ValueError,
                           self.format_and_process,
                           MAIL_TEMPLATE, email_from='other5@gmail.com',

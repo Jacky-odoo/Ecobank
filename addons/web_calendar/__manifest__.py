@@ -5,11 +5,11 @@
     'name': 'Web Calendar',
     'category': 'Hidden',
     'description':"""
-Byte  ERP Web Calendar view.
+Byte Erp Web Calendar view.
 ==========================
 
 """,
-    'author': 'Byte  ERP SA, Valentino Lab (Kalysto)',
+    'author': 'Byte Erp SA, Valentino Lab (Kalysto)',
     'version': '2.0',
     'depends': ['web'],
     'data' : [

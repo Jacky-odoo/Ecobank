@@ -5,7 +5,7 @@
     'name': 'Base Kanban',
     'category': 'Hidden',
     'description': """
-Byte  ERP Web kanban view.
+Byte Erp Web kanban view.
 ========================
 
 """,

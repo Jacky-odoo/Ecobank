@@ -31,7 +31,7 @@ odoo.define('web_editor.tour', function (require) {
                 '<p>Harum trium sententiarum nulli prorsus assentior.</p>\n'+
                 '        </div>\n'+
                 '        <div class="col-md-6 mt16">\n'+
-                '            <img class="img img-responsive shadow mb16" src="/web/static/src/img/logo.png" alt="Byte  ERP text and image block">\n'+
+                '            <img class="img img-responsive shadow mb16" src="/web/static/src/img/logo.png" alt="Byte Erp text and image block">\n'+
                 '        </div>\n'+
                 '    </div>\n'+
                 '</section>\n';
@@ -297,7 +297,7 @@ odoo.define('web_editor.tour', function (require) {
                 '          <img src="/logo.png" alt="Your Logo" class="img-circle img-thumbnail">\n'+
                 '        </td>\n'+
                 '        <td valign="center" width="270">\n'+
-                '          <a href="https://www.facebook.com/Byte  ERP"><span class="fa fa-facebook-square fa-2x text-primary"></span></a>\n'+
+                '          <a href="https://www.facebook.com/Byte Erp"><span class="fa fa-facebook-square fa-2x text-primary"></span></a>\n'+
                 '          <span style="color: rgb(255, 0, 0);" class="fa fa-4x fa-google-plus-square pull-right"></span>\n'+
                 '        </td>\n'+
                 '      </tr>\n'+

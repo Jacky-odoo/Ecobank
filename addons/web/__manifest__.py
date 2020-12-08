@@ -7,10 +7,10 @@
     'version': '1.0',
     'description':
         """
-Byte  ERP Web core module.
+Byte Erp Web core module.
 ========================
 
-This module provides the core of the Byte  ERP Web Client.
+This module provides the core of the Byte Erp Web Client.
         """,
     'depends': ['base'],
     'auto_install': True,

@@ -2,13 +2,13 @@
 # Part of Byte. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Byte  ERP Settings Dashboard',
+    'name': 'Byte Erp Settings Dashboard',
     'version': '1.0',
     'summary': 'Quick actions for installing new app, adding users, completing planners, etc.',
     'category': 'Extra Tools',
     'description':
     """
-Byte  ERP dashboard
+Byte Erp dashboard
 ==============
 * Quick access to install apps
 * Quick users add

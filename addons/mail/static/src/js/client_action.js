@@ -125,9 +125,9 @@ var ChatAction = Widget.extend(ControlPanelMixin, {
             if (def) {
                 def.then(function (value) {
                     if (value === 'granted') {
-                        utils.send_notification(_t('Permission granted'), _t('Byte  ERP has now the permission to send you native notifications on this device.'));
+                        utils.send_notification(_t('Permission granted'), _t('Byte Erp has now the permission to send you native notifications on this device.'));
                     } else {
-                        utils.send_notification(_t('Permission denied'), _t('Byte  ERP will not have the permission to send native notifications on this device.'));
+                        utils.send_notification(_t('Permission denied'), _t('Byte Erp will not have the permission to send native notifications on this device.'));
                     }
                 });
             }

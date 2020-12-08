@@ -87,7 +87,6 @@ class AuthSignupHome(Home):
             try:
                 # retrieve the user info (name, login or email) corresponding to a signup token
                 token_infos = request.env['res.partner'].sudo().signup_retrieve_info(qcontext.get('token'))
-                token_infos['pending_activation'] = False
                 for k, v in token_infos.items():
                     qcontext.setdefault(k, v)
             except:

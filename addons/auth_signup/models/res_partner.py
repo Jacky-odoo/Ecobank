@@ -148,11 +148,8 @@ class ResPartner(models.Model):
         if partner.signup_valid:
             res['token'] = token
             res['name'] = partner.name
-            res['phone'] = partner.phone
         if partner.user_ids:
             res['login'] = partner.user_ids[0].login
-            res['phone'] = partner.user_ids[0].phone
         else:
             res['email'] = res['login'] = partner.email or ''
-            res['phone'] = res['phone'] = partner.email or ''
         return res

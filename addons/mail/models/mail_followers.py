@@ -6,7 +6,7 @@ from odoo import api, fields, models
 
 class Followers(models.Model):
     """ mail_followers holds the data related to the follow mechanism inside
-    Byte  ERP. Partners can choose to follow documents (records) of any kind
+    Byte Erp. Partners can choose to follow documents (records) of any kind
     that inherits from mail.thread. Following documents allow to receive
     notifications for new messages. A subscription is characterized by:
 

@@ -860,7 +860,7 @@ var TimezoneMismatch = FieldSelection.extend({
         if(this.check_timezone()){
             var options = _.extend({
                 delay: { show: 501, hide: 0 },
-                title: _t("Timezone Mismatch : The timezone of your browser doesn't match the selected one. The time in Byte  ERP is displayed according to your field timezone."),
+                title: _t("Timezone Mismatch : The timezone of your browser doesn't match the selected one. The time in Byte Erp is displayed according to your field timezone."),
             });
             $('<span/>').addClass('fa fa-exclamation-triangle o_tz_warning').insertAfter(this.$label).tooltip(options);
         }

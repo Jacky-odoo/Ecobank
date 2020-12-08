@@ -594,7 +594,7 @@ class ResourceCalendar(models.Model):
     def working_hours_on_day(self, day):
         """ Used in hr_payroll/hr_payroll.py
 
-        :deprecated: Byte  ERP saas-3. Use get_working_hours_of_date instead. Note:
+        :deprecated: Byte Erp saas-3. Use get_working_hours_of_date instead. Note:
         since saas-3, take hour/minutes into account, not just the whole day."""
         if isinstance(day, datetime.datetime):
             day = day.replace(hour=0, minute=0)
@@ -604,7 +604,7 @@ class ResourceCalendar(models.Model):
     def interval_min_get(self, dt_from, hours, resource=False):
         """ Schedule hours backwards. Used in mrp_operations/mrp_operations.py.
 
-        :deprecated: Byte  ERP saas-3. Use schedule_hours instead. Note: since
+        :deprecated: Byte Erp saas-3. Use schedule_hours instead. Note: since
         saas-3, counts leave hours instead of all-day leaves."""
         return self.schedule_hours(
             hours * -1.0,
@@ -618,7 +618,7 @@ class ResourceCalendar(models.Model):
         """ Used in mrp_operations/mrp_operations.py (default parameters) and in
         interval_get()
 
-        :deprecated: Byte  ERP saas-3. Use schedule_hours instead. Note:
+        :deprecated: Byte Erp saas-3. Use schedule_hours instead. Note:
         Byday was not used. Since saas-3, counts Leave hours instead of all-day leaves."""
         res = {}
         for dt_str, hours, calendar_id in date_and_hours_by_cal:
@@ -636,7 +636,7 @@ class ResourceCalendar(models.Model):
         """ Unifier of interval_get_multi. Used in: mrp_operations/mrp_operations.py,
         crm/crm_lead.py (res given).
 
-        :deprecated: Byte  ERP saas-3. Use get_working_hours instead."""
+        :deprecated: Byte Erp saas-3. Use get_working_hours instead."""
         self.ensure_one()
         res = self.interval_get_multi(
             [(fields.Datetime.to_string(dt_from), hours, self.id)], resource, byday)[(fields.Datetime.to_string(dt_from), hours, self.id)]
@@ -646,13 +646,13 @@ class ResourceCalendar(models.Model):
     def interval_hours_get(self, dt_from, dt_to, resource=False):
         """ Unused wrapper.
 
-        :deprecated: Byte  ERP saas-3. Use get_working_hours instead."""
+        :deprecated: Byte Erp saas-3. Use get_working_hours instead."""
         return self._interval_hours_get(dt_from, dt_to, resource_id=resource)
 
     @api.multi
     def _interval_hours_get(self, dt_from, dt_to, resource_id=False, timezone_from_uid=None, exclude_leaves=True):
         """ Computes working hours between two dates, taking always same hour/minuts.
-        :deprecated: Byte  ERP saas-3. Use get_working_hours instead. Note: since saas-3,
+        :deprecated: Byte Erp saas-3. Use get_working_hours instead. Note: since saas-3,
         now resets hour/minuts. Now counts leave hours instead of all-day leaves."""
         return self.get_working_hours(
             dt_from, dt_to,

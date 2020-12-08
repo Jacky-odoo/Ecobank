@@ -34,7 +34,7 @@ var Dialog = Widget.extend({
         this._opened = $.Deferred();
 
         options = _.defaults(options || {}, {
-            title: _t('Byte  ERP'), subtitle: '',
+            title: _t('Byte Erp'), subtitle: '',
             size: 'large',
             dialogClass: '',
             $content: false,
@@ -174,13 +174,13 @@ Dialog.alert = function (owner, message, options) {
 Dialog.confirm = function (owner, message, options) {
     var buttons = [
         {
-            text: _t("Yes"),
+            text: _t("Ok"),
             classes: 'btn-primary',
             close: true,
             click: options && options.confirm_callback
         },
         {
-            text: _t("No"),
+            text: _t("Cancel"),
             close: true,
             click: options && options.cancel_callback
         }

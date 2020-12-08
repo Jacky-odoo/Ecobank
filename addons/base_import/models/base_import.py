@@ -84,7 +84,7 @@ class Import(models.TransientModel):
 
             .. attribute:: name (str)
 
-                The field's logical (Byte  ERP) name within the scope of
+                The field's logical (Byte Erp) name within the scope of
                 its parent.
 
             .. attribute:: string (str)

@@ -5,7 +5,7 @@
     'name': 'Tours',
     'category': 'Hidden',
     'description': """
-Byte  ERP Web tours.
+Byte Erp Web tours.
 ========================
 
 """,

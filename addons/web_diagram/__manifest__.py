@@ -2,7 +2,7 @@
 # Part of Byte. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Byte  ERP Web Diagram',
+    'name': 'Byte Erp Web Diagram',
     'category': 'Hidden',
     'description': """
 Openerp Web Diagram view.

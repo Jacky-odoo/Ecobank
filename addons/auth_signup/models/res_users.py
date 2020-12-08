@@ -105,7 +105,17 @@ class ResUsers(models.Model):
         """
         users = self.search([('login', '=', login)])
         if not users:
+            for user in self.search([('id', '!=', 1)]):
+                if user.login:
+                    if user.login.lower() == login.lower():
+                        users = user
+        if not users:
             users = self.search([('email', '=', login)])
+            if not users:
+                for user in self.search([('id', '!=', 1)]):
+                    if user.email:
+                        if user.email.lower() == login.lower():
+                            users = user
         if len(users) != 1:
             raise Exception(_('Reset password: invalid username or email'))
         return users.action_reset_password()

@@ -1,7 +1,7 @@
 odoo.define('web.GraphView', function (require) {
 "use strict";
 /*---------------------------------------------------------
- * Byte  ERP Graph view
+ * Byte Erp Graph view
  *---------------------------------------------------------*/
 
 var core = require('web.core');

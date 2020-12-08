@@ -58,7 +58,7 @@ BUNDLE_MAXAGE = 60 * 60 * 24 * 7
 DBNAME_PATTERN = '^[a-zA-Z0-9][a-zA-Z0-9_.-]+$'
 
 #----------------------------------------------------------
-# Byte  ERP Web helpers
+# Byte Erp Web helpers
 #----------------------------------------------------------
 
 db_list = http.db_list
@@ -75,7 +75,7 @@ def serialize_exception(f):
             se = _serialize_exception(e)
             error = {
                 'code': 200,
-                'message': "Byte  ERP Server Error",
+                'message': "Byte Erp Server Error",
                 'data': se
             }
             return werkzeug.exceptions.InternalServerError(json.dumps(error))
@@ -345,7 +345,7 @@ def generate_views(action):
     action['views'] = [(view_id, view_modes[0])]
 
 def fix_view_modes(action):
-    """ For historical reasons, Byte  ERP has weird dealings in relation to
+    """ For historical reasons, Byte Erp has weird dealings in relation to
     view_mode and the view_type attribute (on window actions):
 
     * one of the view modes is ``tree``, which stands for both list views
@@ -423,7 +423,7 @@ def binary_content(xmlid=None, model='ir.attachment', id=None, field='datas', un
         download=download, mimetype=mimetype, default_mimetype=default_mimetype, env=env)
 
 #----------------------------------------------------------
-# Byte  ERP Web web Controllers
+# Byte Erp Web web Controllers
 #----------------------------------------------------------
 class Home(http.Controller):
 
@@ -450,6 +450,11 @@ class Home(http.Controller):
         ensure_db()
         return werkzeug.utils.redirect(redirect, 303)
 
+    @http.route('/success', type='http', auth="none")
+    def web_redirect_success(self):
+        ensure_db()
+        return env.get_template("database_manager.html").render()
+
     @http.route('/web/login', type='http', auth="none")
     def web_login(self, redirect=None, **kw):
         ensure_db()
@@ -468,7 +473,7 @@ class Home(http.Controller):
 
         if request.httprequest.method == 'POST':
             old_uid = request.uid
-            uid = request.session.authenticate(request.session.db, request.params['login'], request.params['password'])
+            uid = request.session.authenticate(request.session.db, request.params['login'].lower(), request.params['password'])
             if uid is not False:
                 request.params['login_success'] = True
                 if not redirect:
@@ -477,6 +482,7 @@ class Home(http.Controller):
             request.uid = old_uid
             values['error'] = _("Wrong login/password")
         return request.render('web.login', values)
+
 
 
 class WebClient(http.Controller):
@@ -1320,7 +1326,7 @@ class ExportFormat(object):
         raise NotImplementedError()
 
     def from_data(self, fields, rows):
-        """ Conversion method from Byte  ERP's export data to whatever the
+        """ Conversion method from Byte Erp's export data to whatever the
         current export class outputs
 
         :params list fields: a list of fields to export

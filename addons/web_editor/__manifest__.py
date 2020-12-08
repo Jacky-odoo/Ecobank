@@ -5,7 +5,7 @@
     'name': 'Web Editor',
     'category': 'Hidden',
     'description': """
-Byte  ERP Web Editor widget.
+Byte Erp Web Editor widget.
 ==========================
 
 """,

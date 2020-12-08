@@ -237,6 +237,15 @@
         </t>
     </template>
 
+    <template id="web.password_changed" name="Login">
+        <div>
+            <span><h3>Success! Open the App or Website and login from there</h3></span>
+        </div>
+        <div class="text-center" t-if="not disable_footer">
+                        <a href="https://www.byteltd.com" target="_blank">Powered by <span>Byte</span></a>
+                    </div>
+    </template>
+
     <template id="web.login" name="Login">
         <t t-call="web.login_layout">
             <form class="oe_login_form" role="form" t-attf-action="/web/login{{ '?debug' if debug else '' }}" method="post" onsubmit="this.action = this.action + location.hash">

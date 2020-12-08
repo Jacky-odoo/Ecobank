@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <!-- Top Menus-->
+        <menuitem id="root_inventory" name="Inventory" web_icon="ecobank_inventory,static/description/icon.png"/>
+        <menuitem id="menu_inventory_top" name="Inventory" parent="root_inventory" sequence="1"/>
+        <menuitem id="menu_inventory_configuration" name="Configurations" parent="root_inventory" sequence="2"  groups="ecobank_inventory.group_inventory_officer"/>
+
+        <!-- Reports-->
+        <menuitem id="menu_inventory_reports" name="Reports" parent="root_inventory" sequence="3"
+                  groups="ecobank_inventory.group_inventory_officer"/>
+        <menuitem id="menu_inventory_balance" name="Inventory Balance"
+                  parent="menu_inventory_reports"
+                  groups="ecobank_inventory.group_inventory_officer"
+                  sequence="1" action="action_wizard_inventory_balance"/>
+        <menuitem id="menu_inventory_valuation" name="Inventory Valuation"
+                  groups="ecobank_inventory.group_inventory_officer"
+                  parent="menu_inventory_reports" sequence="2" action="action_wizard_inventory_valuation"/>
+        <menuitem id="menu_inventory_gl_posting" name="GL Posting"
+                  groups="ecobank_inventory.group_inventory_officer"
+                  parent="menu_inventory_reports" sequence="3" action="action_wizard_inventory_gl_posting"/>
+        <menuitem id="menu_inventory_move" name="Inventory Moves"
+                  groups="ecobank_inventory.group_inventory_officer"
+                  parent="menu_inventory_reports" sequence="4" action="action_wizard_inventory_move"/>
+
+
+        <menuitem id="menu_inventory_accounts" name="Accounts" parent="menu_inventory_configuration" action="action_inventory_account"/>
+        <menuitem id="menu_inventory_branches" name="Branches" parent="menu_inventory_configuration" action="action_inventory_branch"/>
+        <menuitem id="menu_inventory_departments" name="Departments" parent="menu_inventory_configuration"
+                  groups="ecobank_inventory.group_inventory_officer"
+                  action="action_inventory_department"/>
+        <!--
+        <menuitem id="menu_inventory_employees" name="Employees" parent="menu_inventory_configuration"
+                  groups="ecobank_inventory.group_inventory_officer"
+                  action="action_inventory_user"/>
+                  -->
+        <menuitem id="menu_inventory_suppliers" name="Suppliers" parent="menu_inventory_configuration"
+                  groups="ecobank_inventory.group_inventory_officer"
+                  action="action_inventory_supplier"/>
+        <menuitem id="menu_inventory_uom" name="Unit of Measure" parent="menu_inventory_configuration"
+                  groups="ecobank_inventory.group_inventory_officer"
+                  action="action_inventory_uom"/>
+        <menuitem id="menu_inventory_item" name="Inventory Items" parent="menu_inventory_top" action="action_inventory_item"/>
+        <menuitem id="menu_inventory_addition" name="Inventory Receipt" parent="menu_inventory_top" action="action_inventory_addition"/>
+        <menuitem id="menu_inventory_removal" name="Inventory Issue" parent="menu_inventory_top" action="action_inventory_subtraction"/>
+        <menuitem id="menu_inventory_reorder" name="Inventory Reorder" parent="menu_inventory_top" action="action_inventory_reorder_item"/>
+        <menuitem id="menu_inventory_adjustment" name="Inventory Adjustment" sequence="100" parent="menu_inventory_top" action="action_inventory_adjustment"/>
+    </data>
+</odoo>

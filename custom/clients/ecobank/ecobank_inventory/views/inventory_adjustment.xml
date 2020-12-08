@@ -1,0 +1,91 @@
+<odoo>
+  <data>
+
+    <record id="view_inventory_adjustment_form" model="ir.ui.view">
+      <field name="name">inventory.adjustment.form</field>
+      <field name="model">inventory.adjustment</field>
+      <field name="arch" type="xml">
+        <form string="Inventory Adjustment">
+          <header>
+              <button string="Confirm"
+                      name="confirm_adjustment"
+                      class="oe_highlight"
+                      confirm="Do you want to confirm inventory Adjustment?"
+                      groups="ecobank_inventory.group_inventory_manager"
+                      type="object" states="confirmation" />
+
+              <button string="Refuse"
+                      name="refuse_adjustment"
+                      class="oe_highlight"
+                      confirm="Do you want to refuse confirmation?"
+                      groups="ecobank_inventory.group_inventory_manager"
+                      type="object" states="confirmation" />
+
+              <button string="Set Draft"
+                      name="set_draft"
+                      class="oe_highlight"
+                      groups="ecobank_inventory.group_inventory_user"
+                      type="object" states="refused" />
+
+              <button string="Request Confirmation"
+                      name="request_confirmation"
+                      class="oe_highlight"
+                      confirm="Do you want to request confirmation?"
+                      groups="ecobank_inventory.group_inventory_user"
+                      type="object" states="draft" />
+
+              <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+          <group>
+            <group>
+              <field name="reference"/>
+              <field name="date"/>
+              <field name="total_cost" />
+            </group>
+            <field name="adjustment_lines">
+              <tree editable="bottom">
+                <field name="item_id"/>
+                <field name="quantity"/>
+                <field name="cost" readonly="0"/>
+              </tree>
+            </field>
+          </group>
+          <separator string="Note"/>
+          <field name="note"/>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_inventory_adjustment_tree" model="ir.ui.view">
+      <field name="name">inventory.adjustment.tree</field>
+      <field name="model">inventory.adjustment</field>
+      <field name="arch" type="xml">
+        <tree string="Inventory Adjustment">
+          <field name="reference"/>
+          <field name="date"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_inventory_adjustment_search" model="ir.ui.view">
+      <field name="name">inventory.adjustment.search</field>
+      <field name="model">inventory.adjustment</field>
+      <field name="arch" type="xml">
+        <search string="Search Adjustment">
+          <field name="reference" string=" Search by Reference"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_inventory_adjustment" model="ir.actions.act_window">
+      <field name="name">Inventory Adjustment</field>
+      <field name="res_model">inventory.adjustment</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

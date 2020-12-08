@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="wiz_gl_posting_report_view_form" model="ir.ui.view">
+    <field name="name">Assets GL Posting report</field>
+    <field name="model">wiz.gl.posting.report</field>
+    <field name="arch" type="xml">
+      <form string="Assets Depreciation Expense report">
+        <group>
+              <group>
+                  <field name="month" />
+                  <label for="date_to" string="Target Date"  />
+                  <div>
+                      <field name="date_to" nolabel="1"
+                          class="oe_inline" />
+                  </div>
+
+              </group>
+        </group>
+        <footer>
+          <button name="xls_export" string="Generate Report" type="object"
+                  default_focus="1" class="oe_highlight"/>
+          or
+          <button string="Cancel" class="oe_link" special="cancel" />
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="wiz_gl_posting_report_action" model="ir.actions.act_window">
+    <field name="name">Assets GL Posting report</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">wiz.gl.posting.report</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="wiz_gl_posting_report_view_form"/>
+    <field name="target">new</field>
+  </record>
+
+  <menuitem id="wiz_gl_posting_report_menu"
+            name="GL Posting report"
+            groups="account_asset_management.group_asset_user"
+            parent="account_asset_management.menu_finance_assets"
+            action="wiz_gl_posting_report_action"
+            sequence="200"/>
+
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+© 2018-Today Aktiv Software (http://www.aktivsoftware.com).
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+ -->
+<odoo>
+
+    <template id="menu_extend" inherit_id="web.menu">
+        <xpath expr="//ul[@class='nav navbar-nav navbar-right oe_systray']" position="after">
+            <span style="color:white; float:right; padding-top:6px;" id="display_date_time"/>
+        </xpath>
+    </template>
+
+</odoo>

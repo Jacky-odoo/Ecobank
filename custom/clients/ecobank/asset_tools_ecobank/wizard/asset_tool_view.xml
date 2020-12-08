@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+	<record id="wizard_asset_toole" model="ir.ui.view">
+            <field name="name">wizard.asset.tool</field>
+            <field name="model">wizard.asset.tool</field>
+            <field name="arch" type="xml">
+                <form>
+                	<header>
+                    </header>
+                    <newline/>
+                    <div>
+                        <b>
+                        Update Assets in a given CSV file.
+                            Note: Make sure the you add the Sys No. Column
+                        </b>
+                    </div>
+                    <group>
+                        <field name="file"/>
+                    </group>
+
+                    <footer>
+                        <button name="compute_depreciation" type="object" string="Compute Depreciation" class="oe_highlight"/>
+                        <button name="compute_other_depreciation" type="object" string="Compute Remaining Depreciation" class="oe_highlight"/>
+                        <button name="set_sys_no" type="object" string="Set sys no" class="oe_highlight"/>
+                        <button name="fix_spaces_in_account_no" type="object" string="Fix Spaces" class="oe_highlight"/>
+                        <button name="import_gl_accounts" type="object" string="Import GLS" class="oe_highlight"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+        
+        <record id="action_wizard_asset_tool" model="ir.actions.act_window">
+            <field name="name">Update Assets</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.asset.tool</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem
+                id="menu_asset_tools"
+                parent="account_asset_management.menu_finance_assets"
+                name="Tools"
+                sequence="200"
+                action="action_wizard_asset_tool"
+                groups="base.group_system"/>
+
+
+	</data>
+</odoo>

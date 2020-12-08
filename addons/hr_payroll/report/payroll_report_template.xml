@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="payroll_report_template">
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <t t-foreach="objects" t-as="o">
+                        <div class="page">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <br/>
+                                        <br/>
+                                        <strong>
+                                            <span t-esc="get_month(o)"/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr style="border-top: 1px solid black">
+                                        <th>Name of Employee</th>
+                                        <th>BASIC</th>
+                                        <th>ALLOWANCE(S)</th>
+                                        <th>GROSS</th>
+                                        <th>NASSIT (5%)</th>
+                                        <th>NASSIT (10%)</th>
+                                        <th>PAYE</th>
+                                        <th>TOTAL DED</th>
+                                        <th>NET</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="get_detail(o.slip_ids)"
+                                        t-as="s">
+                                        <td>
+                                            <span t-esc="s['name']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="formatLang(s['basic'], currency_obj = o.currency_id)"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="formatLang(s['allowances'], currency_obj = o.currency_id)"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="formatLang(s['gross'], currency_obj = o.currency_id)"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="formatLang(s['nassit'], currency_obj = o.currency_id)"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="formatLang(s['nassitte'], currency_obj = o.currency_id)"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="formatLang(s['paye'], currency_obj = o.currency_id)"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="formatLang(s['ded'], currency_obj = o.currency_id)"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="formatLang(s['net'], currency_obj = o.currency_id)"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>TOTAL</td>
+                                        <td><strong><span t-esc="formatLang(get_total_basic(o.slip_ids), currency_obj = o.currency_id)"/></strong></td>
+                                        <td><strong><span t-esc="formatLang(get_total_allowances(o.slip_ids), currency_obj = o.currency_id)"/></strong></td>
+                                        <td><strong><span t-esc="formatLang(get_total_gross(o.slip_ids), currency_obj = o.currency_id)"/></strong></td>
+                                        <td><strong><span t-esc="formatLang(get_total_nassit(o.slip_ids), currency_obj = o.currency_id)"/></strong></td>
+                                        <td><strong><span t-esc="formatLang(get_total_nassitte(o.slip_ids), currency_obj = o.currency_id)"/></strong></td>
+                                        <td><strong><span t-esc="formatLang(get_total_paye(o.slip_ids), currency_obj = o.currency_id)"/></strong></td>
+                                        <td><strong><span t-esc="formatLang(get_total_ded(o.slip_ids), currency_obj = o.currency_id)"/></strong></td>
+                                        <td><strong><span t-esc="formatLang(get_total_net(o.slip_ids), currency_obj = o.currency_id)"/></strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <br/>
+                            <br/>
+                            <strong><h4> Date and Signature: .................................................</h4></strong>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

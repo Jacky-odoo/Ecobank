@@ -1,0 +1,74 @@
+<odoo>
+  <data>
+
+    <record id="view_inventory_supplier_form" model="ir.ui.view">
+      <field name="name">inventory.supplier.form</field>
+      <field name="model">inventory.supplier</field>
+      <field name="arch" type="xml">
+        <form string="Inventory Supplier">
+          <sheet>
+
+            <div class="oe_button_box" name="button_box">
+                  <button name="%(action_inventory_addition_line)d"
+                      class="oe_stat_button"
+                      context="{'search_default_supplier_id': active_id,'default_supplier_id': active_id}"
+                      icon="fa-money"
+                      type="action">
+                      <field name="supply_count" widget="statinfo" string="Supplies"/>
+                  </button>
+            </div>
+          <group col="2">
+            <group>
+              <field name="name"/>
+              <field name="code"/>
+              <field name="address"/>
+            </group>
+            <group>
+              <field name="contact_person"/>
+              <field name="contact_number"/>
+            </group>
+          </group>
+            <notebook>
+              <page string="Note">
+                <field name="note"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_inventory_supplier_tree" model="ir.ui.view">
+      <field name="name">inventory.supplier.tree</field>
+      <field name="model">inventory.supplier</field>
+      <field name="arch" type="xml">
+        <tree string="Inventory Suppliers">
+          <field name="name"/>
+          <field name="code"/>
+          <field name="address"/>
+          <field name="contact_person"/>
+          <field name="contact_number"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_inventory_supplier_search" model="ir.ui.view">
+      <field name="name">inventory.supplier.search</field>
+      <field name="model">inventory.supplier</field>
+      <field name="arch" type="xml">
+        <search string="Search for Inventory supplier">
+          <field name="name" string=" Search by Name"/>
+          <field name="code" string=" Search by Code"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_inventory_supplier" model="ir.actions.act_window">
+      <field name="name">Inventory Suppliers</field>
+      <field name="res_model">inventory.supplier</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

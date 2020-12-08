@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.rule" id="res_permission_res_users_rule">
+            <field name="name">res_user: Non User cannot see admin</field>
+            <field name="protected">1</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="domain_force">[('id', '!=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+    </data>
+</odoo>
+

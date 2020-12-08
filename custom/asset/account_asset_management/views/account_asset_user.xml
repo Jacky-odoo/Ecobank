@@ -1,0 +1,54 @@
+<odoo>
+  <data>
+
+    <record id="account_asset_user_view_form" model="ir.ui.view">
+      <field name="name">account.asset.user.form</field>
+      <field name="model">account.asset.user</field>
+      <field name="arch" type="xml">
+        <form string="Asset User">
+          <group>
+            <group>
+              <field name="name"/>
+              <field name="empid"/>
+              <field name="email" />
+            </group>
+            <field name="asset_ids"/>
+          </group>
+          <separator string="Notes"/>
+          <field name="note"/>
+        </form>
+      </field>
+    </record>
+
+    <record id="account_asset_user_view_tree" model="ir.ui.view">
+      <field name="name">account.asset.user.tree</field>
+      <field name="model">account.asset.user</field>
+      <field name="arch" type="xml">
+        <tree string="Asset Users">
+          <field name="name"/>
+          <field name="empid"/>
+          <field name="email"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="account_asset_user_view_search" model="ir.ui.view">
+      <field name="name">account.asset.user.search</field>
+      <field name="model">account.asset.user</field>
+      <field name="arch" type="xml">
+        <search string="Search for Asset User">
+          <field name="name" string=" Search by Name"/>
+          <field name="empid" string=" Search by User ID"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="account_asset_user_action" model="ir.actions.act_window">
+      <field name="name">Asset Users</field>
+      <field name="res_model">account.asset.user</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

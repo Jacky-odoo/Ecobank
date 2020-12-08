@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+
+    <record id="view_inventory_user_form" model="ir.ui.view">
+      <field name="name">inventory.user.form</field>
+      <field name="model">inventory.user</field>
+      <field name="arch" type="xml">
+        <form string="Inventory user">
+          <sheet>
+          <group>
+            <group>
+              <field name="name"/>
+              <field name="empid"/>
+              <field name="email"/>
+            </group>
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_inventory_user_tree" model="ir.ui.view">
+      <field name="name">inventory.user.tree</field>
+      <field name="model">inventory.user</field>
+      <field name="arch" type="xml">
+        <tree string="Bank user">
+          <field name="name"/>
+          <field name="empid"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_inventory_user_search" model="ir.ui.view">
+      <field name="name">inventory.user.search</field>
+      <field name="model">inventory.user</field>
+      <field name="arch" type="xml">
+        <search string="Search for Bank user">
+          <field name="name" string=" Search by Name"/>
+          <field name="empid" string=" Search by ID"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_inventory_user" model="ir.actions.act_window">
+      <field name="name">Bank user</field>
+      <field name="res_model">inventory.user</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

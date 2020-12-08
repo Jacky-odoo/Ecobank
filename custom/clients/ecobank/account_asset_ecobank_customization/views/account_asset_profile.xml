@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+		<record id="view_account_asset_profile_form_inherit" model="ir.ui.view">
+			<field name="name">account.asset.profile.form</field>
+			<field name="model">account.asset.profile</field>
+			<field name="inherit_id"
+				ref="account_asset_management.account_asset_profile_view_form" />
+			<field name="arch" type="xml">
+				<field name="method_number" position="before">
+					<field name="mutable_depreciation"/>
+				</field>
+			</field>
+		</record>
+    </data>
+</odoo>

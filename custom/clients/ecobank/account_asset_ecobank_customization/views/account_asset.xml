@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- form for assets -->
+		<record id="view_account_asset_asset_form_inherit" model="ir.ui.view">
+			<field name="name">account.asset.form</field>
+			<field name="model">account.asset</field>
+			<field name="inherit_id"
+				ref="account_asset_management.account_asset_view_form" />
+			<field name="arch" type="xml">
+				<field name="prorata" position="before">
+					<field name="asset_gl_account_id" attrs="{'invisible':[('type','=','view')]}" />
+					<field name="depreciation_expense_account_id" attrs="{'invisible':[('type','=','view')],
+                                                      'required':[('type','=','normal')]}" />
+					<field name="accumulated_depreciation_account_id" attrs="{'invisible':[('type','=','view')],
+                                                      'required':[('type','=','normal')]}" />
+
+				</field>
+				<field name="parent_id" position="before">
+					<field name="serial_no"/>
+				</field>
+				<field name="type" position="before">
+					<field name="vendor"/>
+				</field>
+
+			</field>
+		</record>
+		<record id="view_account_asset_asset_tree_inherit" model="ir.ui.view">
+			<field name="name">account.asset.tree</field>
+			<field name="model">account.asset</field>
+			<field name="inherit_id"
+				ref="account_asset_management.account_asset_view_tree" />
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="serial_no" />
+				</field>
+			</field>
+		</record>
+    </data>
+</odoo>

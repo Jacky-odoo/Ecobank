@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+	<record id="view_inventory_move_form" model="ir.ui.view">
+            <field name="name">wiz.inventory.move</field>
+            <field name="model">wiz.inventory.move</field>
+            <field name="arch" type="xml">
+                <form string="Print Moves Report">
+					<newline />
+					<group>
+						<group>
+                            <field name="move_type"/>
+							<field name="month" />
+							<label for="date_from" string="Duration" />
+							<div>
+									<field name="date_from" nolabel="1"
+										class="oe_inline" />
+									<label string="-" class="oe_inline" />
+									<field name="date_to" nolabel="1"
+										class="oe_inline" />
+							</div>
+
+						</group>
+						<group>
+
+						</group>
+						</group>
+                    <footer>
+                        <button name="print_report" type="object" string="Print Report"
+							class="oe_highlight" />
+                    </footer>
+				</form>
+            </field>
+        </record>
+        
+        <record id="action_wizard_inventory_move" model="ir.actions.act_window">
+            <field name="name">Get Inventory Moves</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wiz.inventory.move</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+	</data>
+</odoo>

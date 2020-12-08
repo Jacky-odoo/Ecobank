@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_department_user,asset.department,model_asset_department,account_asset_management.group_asset_user,1,0,0,0
+access_account_sub_category_user,account.sub.category,model_account_sub_category,account_asset_management.group_asset_user,1,0,0,0
+access_asset_unit_user,asset.unit,model_asset_unit,account_asset_management.group_asset_user,1,0,0,0
+,,,,,,,
+access_department_manager,asset.department,model_asset_department,account_asset_management.group_asset_manager,1,1,1,1
+access_account_sub_category_manager,account.sub.category,model_account_sub_category,account_asset_management.group_asset_manager,1,1,1,1
+access_asset_unit_manager,asset.unit,model_asset_unit,account_asset_management.group_asset_manager,1,1,1,1

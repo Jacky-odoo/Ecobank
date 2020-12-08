@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	<template id="asset_detail_report">
+	         <t t-call="report.external_layout">	
+	         <t t-set="o" t-value="o.with_context({'name':get_details(o)['name']})" />
+			<div class="page" style="font-size:15px">
+				
+				<br/><br/>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~1st ROW~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->				
+				<div class="row">
+						<div class="row" style="margin-top:60px;">
+						<h2><center><strong>Asset Details</strong></center></h2>
+							<div class="col-xs-12" style="margin-top:20px;">
+								<table width="100%" class="table table-bordered">
+									<tr>
+									    <td width="42%" rowspan="10">
+											<img t-if="get_details(o)['image']" t-att-src="'data:image/png;base64,%s' % o.image" style="height: 250px;width: 250px;border-radius: 10px;"/>
+										</td>
+										<td width="15%" >
+											<strong>Description</strong>
+										</td>
+										<td width="44%"> 
+											<t t-esc="get_details(o)['name']"/>
+										</td>
+									</tr>
+									<tr>
+										<td width="25%">
+											<strong>Sys No</strong>
+										</td>
+
+										<td width="72%">
+										<t t-esc="get_details(o)['sys_no']" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Co Asset No.</strong>
+										</td>
+
+										<td > 
+											
+											<t t-esc="get_details(o)['code']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Serial No.</strong>
+										</td>
+
+										<td > 
+											<t t-esc="get_details(o)['serial_no']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Vendor</strong>
+										</td>
+
+										<td >
+											<t t-esc="get_details(o)['vendor']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Acquisition Cost</strong>
+										</td>
+
+										<td >
+											<span t-esc="formatLang(get_details(o)['depreciation_base'], currency_obj = o.currency_id)"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Residual Value</strong>
+										</td>
+
+										<td>
+											<span t-esc="formatLang(get_details(o)['value_residual'], currency_obj = o.currency_id)"/>
+
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Purchase Value</strong>
+										</td>
+
+										<td >
+											<span t-esc="formatLang(get_details(o)['purchase_value'], currency_obj = o.currency_id)"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Salvage Value</strong>
+										</td>
+
+										<td >
+											<span t-esc="formatLang(get_details(o)['salvage_value'], currency_obj = o.currency_id)"/>
+										</td>
+									</tr>
+								</table>
+<!--							</div>-->
+						</div>
+					</div>
+					<div class="col-xs-4">
+					</div>				
+				</div>
+				<hr />
+				
+<!--~~~~~~~~~~~~~~~~~~~~~~~~2nd ROW~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+				<div class="col-xs-12" style="margin-top:20px;">
+<!--					<div class="col-xs-4">-->
+							<div class="col-xs-6">
+						        <h4><strong>Other Information</strong></h4>
+								<table width="100%" class="table table-bordered">
+
+									<tr>
+										<td>
+											<strong>Acquired Date</strong>
+										</td>
+
+										<td >
+											<span t-esc="get_details(o)['acquired_date']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>In Service Date</strong>
+										</td>
+
+										<td >
+											<span t-esc="get_details(o)['date_start']" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Category/Class</strong>
+										</td>
+
+										<td >
+											<t t-esc="get_details(o)['profile']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Sub Category</strong>
+										</td>
+
+										<td >
+											<t t-esc="get_details(o)['sub_category']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Location</strong>
+										</td>
+
+										<td >
+											<t t-esc="get_details(o)['location']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Department</strong>
+										</td>
+
+										<td >
+											<t t-esc="get_details(o)['asset_department']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Unit</strong>
+										</td>
+
+										<td >
+											<t t-esc="get_details(o)['asset_unit']"/>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Assigned To</strong>
+										</td>
+
+										<td >
+											<t t-esc="get_details(o)['partner']"/>
+										</td>
+									</tr>
+								</table>
+						</div>
+							<div class="col-xs-6">
+					    <h4><strong>Depreciation Details</strong></h4>
+								<table width="100%" class="table table-bordered">
+									<tr>
+										<td width="50%">
+											<strong>Number of Years</strong>
+										</td>
+
+										<td width="40%">
+										    <t t-esc="get_details(o)['method_number']"/>
+										</td>
+
+									</tr>
+									<tr>
+										<td>
+											<strong>Number of Months</strong>
+										</td>
+
+										<td>
+										    <t t-esc="get_details(o)['method_number_month']" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>GL Account</strong>
+										</td>
+
+										<td>
+										    <t t-esc="get_details(o)['asset_gl_account']" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Depreciation Expense Account</strong>
+										</td>
+
+										<td>
+										    <t t-esc="get_details(o)['depreciation_expense_account']" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Accumulated Depreciation Account</strong>
+										</td>
+
+										<td>
+										    <t t-esc="get_details(o)['accumulated_depreciation_account']" />
+										</td>
+									</tr>
+
+								</table>
+					</div>
+
+				</div>
+				<hr/>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~3rd ROW~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->	
+				<div class="row">
+
+				</div>
+			</div>
+			</t>
+	</template>
+	
+	<template id="asset_details_report_template">
+		<t t-call="report.html_container">
+		     <t t-foreach="objects" t-as="o">
+            <t t-call="account_asset_management.asset_detail_report" t-lang="get_details(o)['name']"/>
+        </t>
+		</t>
+	</template>  
+</data>
+</openerp>
+

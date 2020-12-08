@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+
+    <record id="view_inventory_account_form" model="ir.ui.view">
+      <field name="name">inventory.account.form</field>
+      <field name="model">inventory.account</field>
+      <field name="arch" type="xml">
+        <form string="Inventory Account">
+          <sheet>
+          <group>
+            <group>
+              <field name="code"/>
+              <field name="name"/>
+            </group>
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_inventory_account_tree" model="ir.ui.view">
+      <field name="name">inventory.account.tree</field>
+      <field name="model">inventory.account</field>
+      <field name="arch" type="xml">
+        <tree string="Inventory account">
+          <field name="name"/>
+          <field name="code"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_inventory_account_search" model="ir.ui.view">
+      <field name="name">inventory.account.search</field>
+      <field name="model">inventory.account</field>
+      <field name="arch" type="xml">
+        <search string="Search for Inventory account">
+          <field name="name" string=" Search by Name"/>
+          <field name="code" string=" Search by Code"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_inventory_account" model="ir.actions.act_window">
+      <field name="name">Inventory account</field>
+      <field name="res_model">inventory.account</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

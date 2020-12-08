@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record id="print_asset_report_wizard" model="ir.ui.view">
+			<field name="name">print.asset.report.form</field>
+			<field name="model">print.asset.report</field>
+			<field name="arch" type="xml">
+				<form string="Print Asset Report">
+					<header>
+						<button name="print_report" type="object" string="Print Report" class="oe_highlight" />
+					</header>
+					<newline />
+					<group>
+						<group>
+							<field name="month" />
+							<label for="date_from" string="Duration" />
+							<div>
+								<field name="date_from" nolabel="1" class="oe_inline" />
+								<label string="-" class="oe_inline" />
+								<field name="date_to" nolabel="1" class="oe_inline" />
+							</div>
+						</group>
+						<group>
+						</group>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_print_asset_report" model="ir.actions.act_window">
+			<field name="name">Print Asset Report</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">print.asset.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+		
+		<menuitem action="action_print_asset_report" id="menu_print_asset_report"
+            parent="account_asset_management.menu_finance_assets" sequence="28" />
+            
+         
+  
+	</data>
+</openerp>

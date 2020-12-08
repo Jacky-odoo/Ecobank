@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+
+		<menuitem name="Asset Mangement" id="account.menu_finance" />
+
+		<menuitem id="account.menu_finance_receivables" name="Customers"
+			sequence="2" parent="base.next_id_6" />
+		<menuitem id="account.menu_finance_payables" name="Suppliers"
+			sequence="2" parent="base.next_id_6" />
+
+		<menuitem id="account.menu_account_reports" name="Financial Reports"
+			parent="base.next_id_6" sequence="30" />
+
+		<menuitem action="account.action_account_moves_all_a" icon="STOCK_JUSTIFY_FILL"
+			id="menu_action_account_moves_all" parent="base.next_id_6" sequence="1"
+			groups="account.group_account_user" />
+
+		<menuitem
+            action="account.action_account_fiscal_position_form"
+            id="account.menu_action_account_fiscal_position_form"
+			parent="base.next_id_6" sequence="3"/>
+
+		<menuitem
+            id="account.account_account_menu"
+			parent="base.next_id_6" sequence="3"/>
+
+		<menuitem
+            name='Payments'
+            id='payment.root_payment_menu'
+            parent="base.next_id_6"/>
+		<menuitem id="account.menu_finance_entries" name="Adviser" parent="base.next_id_6" sequence="4" groups="account.group_account_manager"/>
+
+		<menuitem id="account.menu_finance_reports" name="Reports" parent="account.menu_finance" sequence="5"/>
+		<menuitem id="account.account_reports_management_menu" name="Management" parent="base.next_id_6" sequence="4" groups="account.group_account_user"/>
+		<menuitem id="account.account_reports_business_intelligence_menu" name="Business Intelligence" parent="base.next_id_6" sequence="5" groups="account.group_account_invoice"/>
+        <menuitem id="account.menu_finance_legal_statement" name="PDF Reports" parent="base.next_id_6" groups="account.group_account_user"/>
+
+		<menuitem id="account.account_management_menu" parent="base.next_id_6" sequence="4"/>
+
+		<menuitem id="account.menu_account_config" name="Settings" parent="base.next_id_6"
+            sequence="0" groups="base.group_system"/>
+
+		<menuitem id="account.menu_board_journal_1" name="Dashboard" action="account.open_account_journal_dashboard_kanban" parent="base.next_id_6" sequence="1" groups="account.group_account_user"/>
+
+    <menuitem
+            action="account.action_account_moves_all_a"
+            icon="STOCK_JUSTIFY_FILL"
+            id="account.menu_action_account_moves_all"
+            parent="base.next_id_6"
+            sequence="1"
+            groups="account.group_account_user"
+        />
+
+		<menuitem action="account.action_account_invoice_report_all"
+			id="account.menu_action_account_invoice_report_all" parent="base.next_id_6"
+			sequence="0" />
+		<menuitem action="account.action_account_form" id="account.menu_action_account_form" parent="account_asset_management.menu_finance_config_assets" sequence="20"/>
+
+		<menuitem id="account_fiscal_year.menu_date_range_accounting" name="Date ranges"
+            parent="account_asset_management.menu_finance_config_assets" sequence="200"/>
+
+
+<!--
+
+
+		<record model="ir.ui.view" id="view_move_line_tree">
+			<field name="name">account.move.line.tree</field>
+			<field name="model">account.move.line</field>
+			<field name="inherit_id" ref="account.view_move_line_tree" />
+			<field name="arch" type="xml">
+				<xpath expr='//tree[@string="Journal Items"]' position='attributes'>
+					<attribute name="create">false</attribute>
+					<attribute name="edit">false</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_move_line_form">
+			<field name="name">account.move.line.form</field>
+			<field name="model">account.move.line</field>
+			<field name="inherit_id" ref="account.view_move_line_form" />
+			<field name="arch" type="xml">
+				<xpath expr='//form[@string="Journal Item"]' position='attributes'>
+					<attribute name="create">false</attribute>
+					<attribute name="edit">false</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_move_line_form2">
+			<field name="name">account.move.line.form</field>
+			<field name="model">account.move.line</field>
+			<field name="inherit_id" ref="account.view_move_line_form2" />
+			<field name="arch" type="xml">
+				<xpath expr='//form[@string="Journal Item"]' position='attributes'>
+					<attribute name="create">false</attribute>
+					<attribute name="edit">false</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_move_tree">
+			<field name="name">account.move.tree</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_tree" />
+			<field name="arch" type="xml">
+				<xpath expr='//tree[@string="Journal Entries"]' position='attributes'>
+					<attribute name="create">false</attribute>
+					<attribute name="edit">false</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_move_form">
+			<field name="name">account.move.form</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form" />
+			<field name="arch" type="xml">
+				<xpath expr='//form[@string="Account Entry"]' position='attributes'>
+					<attribute name="create">false</attribute>
+					<attribute name="edit">false</attribute>
+				</xpath>
+			</field>
+		</record>
+-->
+
+		<!-- -->
+<!--
+		<menuitem name="Financial Assets report" parent="account.menu_finance_reports"
+			action="account_asset_management_xls.action_account_asset_report_wizard"
+			id="account_asset_management_xls.menu_account_asset_report_wizard"
+			sequence="0" icon="STOCK_JUSTIFY_FILL" />
+-->
+
+
+	</data>
+</odoo>

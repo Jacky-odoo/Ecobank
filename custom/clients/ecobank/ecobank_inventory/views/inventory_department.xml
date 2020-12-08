@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+
+    <record id="view_inventory_department_form" model="ir.ui.view">
+      <field name="name">inventory.department.form</field>
+      <field name="model">inventory.department</field>
+      <field name="arch" type="xml">
+        <form string="Inventory department">
+          <sheet>
+          <group>
+            <group>
+              <field name="name"/>
+            </group>
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_inventory_department_tree" model="ir.ui.view">
+      <field name="name">inventory.department.tree</field>
+      <field name="model">inventory.department</field>
+      <field name="arch" type="xml">
+        <tree string="Bank department">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_inventory_department_search" model="ir.ui.view">
+      <field name="name">inventory.department.search</field>
+      <field name="model">inventory.department</field>
+      <field name="arch" type="xml">
+        <search string="Search for Bank department">
+          <field name="name" string=" Search by Name"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_inventory_department" model="ir.actions.act_window">
+      <field name="name">Bank department</field>
+      <field name="res_model">inventory.department</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="driver_issue_report_template">
+			<div class="workbook">
+				<div class="worksheet" name="Driver Issue Report" fixpages="1"
+					wpages="1" hpages="0">
+					<table>
+						<tbody>
+							<tr>
+								<td colspan="9" rowspan="2"
+									easyfx="font: bold on, height 400; align: horiz center,vert center">
+									<span t-esc="data['form']['date']" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table>
+						<tbody>
+							<tr>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table>
+
+						<thead>
+							<tr>
+								<th t-foreach="data['form']['issue_data'][0]" t-as="row">
+									<span t-esc="row[0]" />
+								</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr t-foreach="data['form']['issue_data'][1]" t-as="row">
+								<td t-foreach="row" t-as="r_data">
+									<span t-esc="r_data[0]" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</template>
+	</data>
+</openerp>

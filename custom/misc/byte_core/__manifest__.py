@@ -1,0 +1,18 @@
+{
+    'name': 'Byte Core',
+    'version': '10.0',
+    'category': 'All',
+    'summary': 'Byte Core. Needed for All Byte  ERP Deployments',
+    'author': 'Francis Bangura<francis@byteltd.com>',
+    'website': 'https://byteltd.com',
+    'depends': ['web_responsive', 'sh_message',
+                'report', 'web_export_view',
+                'search_by_range',
+                'auto_backup',
+                # 'access_restriction_by_ip',
+                # 'field_image_preview',
+                'report_xlsx_helper', 'auditlog'],
+    'data': ['views/ir_rule.xml',
+             'views/res_users.xml'],
+    'installable': True,
+}

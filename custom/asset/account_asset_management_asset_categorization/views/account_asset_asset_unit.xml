@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_account_asset_unit_form">
+			<field name="name">account.asset.form</field>
+			<field name="model">account.asset</field>
+			<field name="inherit_id"
+				ref="account_asset_management.account_asset_view_form" />
+			<field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="asset_unit_id" attrs="{'invisible':[('type','=','view')]}" />
+                </field>
+			</field>
+		</record>
+
+		<record id="action_account_asset_unit" model="ir.actions.act_window">
+			<field name="name">Asset Unit</field>
+			<field name="res_model">asset.unit</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<record id="account_asset_unit_view_unit_tree" model="ir.ui.view">
+			<field name="name">asset.unit.tree</field>
+			<field name="model">asset.unit</field>
+			<field name="arch" type="xml">
+				<tree string="Asset Unit" editable="top">
+					<field name="name" />
+					<field name="code" />
+				</tree>
+			</field>
+		</record>
+
+		<menuitem parent="account_asset_management.menu_finance_config_assets"
+			id="menu_action_account_asset_asset_unit" action="action_account_asset_unit"
+			name="Asset Unit" />
+
+	</data>
+</openerp>

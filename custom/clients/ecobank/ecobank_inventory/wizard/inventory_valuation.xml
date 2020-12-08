@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+	<record id="view_inventory_valuation_form" model="ir.ui.view">
+            <field name="name">wiz.inventory.valuation</field>
+            <field name="model">wiz.inventory.valuation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="date"/>
+                    </group>
+
+                    <footer>
+                        <button name="print_inventory_valuation" type="object" string="Get Report" class="oe_highlight"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+        
+        <record id="action_wizard_inventory_valuation" model="ir.actions.act_window">
+            <field name="name">Get Inventory Valuation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wiz.inventory.valuation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+	</data>
+</odoo>

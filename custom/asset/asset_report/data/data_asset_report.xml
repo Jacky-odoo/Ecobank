@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report 
+            id="action_report_asset"
+            model="print.asset.report"
+            string="Driver Issue Report"
+            report_type="xlsx"
+            name="asset_report.asset_asset_report"
+            file="asset_report.asset_asset_report_template"
+        />
+    </data>
+</openerp>

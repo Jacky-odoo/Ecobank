@@ -1,0 +1,74 @@
+<odoo>
+  <data>
+
+    <record id="view_inventory_addition_form" model="ir.ui.view">
+      <field name="name">inventory.addition.form</field>
+      <field name="model">inventory.addition</field>
+      <field name="arch" type="xml">
+        <form string="Inventory Receipt Batch">
+          <header>
+              <button string="Confirm" name="confirm_addition"
+                      type="object"
+                      class="oe_highlight"
+                      confirm="Do you want to confirm the item(s) receipt?"
+                      groups="ecobank_inventory.group_inventory_manager"
+                      states="draft" />
+              <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+          <group>
+            <group>
+              <field name="reference"/>
+              <field name="date"/>
+            </group>
+            <field name="addition_lines_ids">
+              <tree editable="bottom">
+                <field name="state" invisible="1"/>
+                <field name="item_id" required="1"/>
+                <field name="date" required="1"/>
+                <field name="quantity" required="1"/>
+                <field name="cost" required="1"/>
+                <field name="supplier_id" required="1"/>
+                <field name="invoice_number" required="1"/>
+                <field name="quantity_remaining"/>
+              </tree>
+            </field>
+          </group>
+          <separator string="Note"/>
+          <field name="note"/>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_inventory_addition_tree" model="ir.ui.view">
+      <field name="name">inventory.addition.tree</field>
+      <field name="model">inventory.addition</field>
+      <field name="arch" type="xml">
+        <tree string="Inventory Receipt Batch">
+          <field name="reference"/>
+          <field name="date"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_inventory_addition_search" model="ir.ui.view">
+      <field name="name">inventory.addition.search</field>
+      <field name="model">inventory.addition</field>
+      <field name="arch" type="xml">
+        <search string="Search for Receipt Batch">
+          <field name="reference" string=" Search by Reference"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_inventory_addition" model="ir.actions.act_window">
+      <field name="name">Inventory Receipt Batch</field>
+      <field name="res_model">inventory.addition</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

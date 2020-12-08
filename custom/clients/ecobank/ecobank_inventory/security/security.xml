@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<odoo>
+    <data noupdate="0">
+
+        <!-- Inventory Group Category -->
+        <record id="module_category_inventory" model="ir.module.category">
+            <field name="name">Inventory Access Right</field>
+            <field name="sequence">23</field>
+        </record>
+
+        <!-- Inventory Groups -->
+
+        <record id="group_inventory_user" model="res.groups">
+            <field name="name">Inventory User</field>
+            <field name="category_id" ref="module_category_inventory"/>
+        </record>
+
+        <record id="group_inventory_officer" model="res.groups">
+            <field name="name">Inventory Officer</field>
+            <field name="category_id" ref="module_category_inventory"/>
+            <field name="implied_ids" eval="[(4, ref('ecobank_inventory.group_inventory_user'))]"/>
+        </record>
+
+        <record id="group_inventory_manager" model="res.groups">
+            <field name="name">Inventory Manager</field>
+            <field name="category_id" ref="module_category_inventory"/>
+            <field name="implied_ids" eval="[(4, ref('ecobank_inventory.group_inventory_officer'))]"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,67 @@
+<odoo>
+  <data>
+
+    <record id="view_inventory_subtraction_line_form" model="ir.ui.view">
+      <field name="name">inventory.subtraction.line.form</field>
+      <field name="model">inventory.subtraction.line</field>
+      <field name="arch" type="xml">
+        <form string="Inventory Issue" create="0" edit="0">
+          <header>
+              <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+          <group>
+            <field name="reference"/>
+            <field name="date"/>
+            <field name="item_id"/>
+            <field name="quantity"/>
+            <field name="branch_id"/>
+            <field name="department_id"/>
+            <field name="recipient"/>
+            <field name="issuer"/>
+            <field name="value"/>
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_inventory_subtraction_line_tree" model="ir.ui.view">
+      <field name="name">inventory.subtraction.line.tree</field>
+      <field name="model">inventory.subtraction.line</field>
+      <field name="arch" type="xml">
+        <tree string="Inventory Issue" create="0" edit="0">
+          <field name="reference"/>
+            <field name="date"/>
+            <field name="item_id"/>
+            <field name="quantity"/>
+            <field name="branch_id"/>
+            <field name="department_id"/>
+            <field name="recipient"/>
+            <field name="issuer"/>
+            <field name="value"/>
+            <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_inventory_subtraction_line_search" model="ir.ui.view">
+      <field name="name">inventory.subtraction.line.search</field>
+      <field name="model">inventory.subtraction.line</field>
+      <field name="arch" type="xml">
+        <search string="Search for Inventory Issue">
+          <field name="reference" string=" Search by Reference"/>
+          <field name="item_id" string=" Search by Item"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_inventory_subtraction_line" model="ir.actions.act_window">
+      <field name="name">Inventory Issue</field>
+      <field name="res_model">inventory.subtraction.line</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_asset_user_user,account.asset.user,model_account_asset_user,account_asset_management.group_asset_user,1,1,1,0
+access_account_asset_user_manager,account.asset.user,model_account_asset_user,account_asset_management.group_asset_manager,1,1,1,1
+access_account_asset_profile_user,account.asset.profile,model_account_asset_profile,account_asset_management.group_asset_user,1,1,0,0
+access_account_asset_profile_manager,account.asset.profile,model_account_asset_profile,account_asset_management.group_asset_manager,1,1,1,1
+access_account_asset_user,account.asset,model_account_asset,account_asset_management.group_asset_user,1,1,1,1
+access_account_asset_line_user,account.asset.line,model_account_asset_line,group_asset_user,1,1,1,1
+access_account_asset_recompute_trigger_user,account.asset.recompute.trigger,model_account_asset_recompute_trigger,account_asset_management.group_asset_user,1,1,1,1

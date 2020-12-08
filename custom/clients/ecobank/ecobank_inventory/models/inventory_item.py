@@ -16,8 +16,7 @@ class InventoryItem(models.Model):
                                         store=True)
     note = fields.Text(string='Note')
     value = fields.Float(string='Stock Value',
-                         compute='compute_details',
-                         store=True)
+                         compute='compute_details')
     uom_id = fields.Many2one(comodel_name='inventory.uom', string='Unit of Measure', ondelete='restrict')
     receipt_count = fields.Integer(string='Inventory Receipts',
                                    compute='compute_receipts',
@@ -106,7 +105,7 @@ class InventoryItem(models.Model):
                 if len(sorted_receipts) == 1:
                     average_cost = sorted_receipts[0].cost
                     current_value = average_cost * sorted_receipts[0].quantity_remaining
-                elif len(sorted_receipts) == 2:
+                elif len(sorted_receipts) > 1:
                     if rec.valuation_method == 'fifo':
                         average_cost = sorted_receipts[0].cost
                         current_value = average_cost * sum(all_additions.mapped('quantity_remaining'))
@@ -114,13 +113,22 @@ class InventoryItem(models.Model):
                         average_cost = sorted_receipts[-1].cost
                         current_value = average_cost * sum(all_additions.mapped('quantity_remaining'))
                     elif rec.valuation_method == 'average':
+                        total_cost_per_value = 0.0
+                        receipts_summation = 0.0
+                        for receipt in sorted_receipts:
+                            receipt_total = receipt.quantity_remaining*receipt.cost
+                            total_cost_per_value += receipt_total
+                            receipts_summation += receipt.quantity_remaining
+                        average_cost = total_cost_per_value/receipts_summation
+                        current_value = average_cost*receipts_summation
+                        """
                         first_qty = sorted_receipts[0].quantity_remaining
                         first_value = sorted_receipts[0].cost
                         second_qty = sorted_receipts[-1].quantity_remaining
                         second_value = sorted_receipts[-1].cost
                         average_cost = ((first_qty * first_value) + (second_qty * second_value)) / (
                                     first_qty + second_qty)
-                        current_value = average_cost * (first_qty + second_qty)
+                        current_value = average_cost * (first_qty + second_qty)"""
             rec.available_quantity = sum(all_additions.mapped('quantity_remaining'))
             rec.average_cost = average_cost
             rec.value = current_value
@@ -152,7 +160,7 @@ class InventoryItem(models.Model):
                 if len(sorted_receipts) == 1:
                     average_cost = sorted_receipts[0].cost
                     current_value = average_cost * sorted_receipts[0].quantity_remaining
-                elif len(sorted_receipts) == 2:
+                elif len(sorted_receipts)>1:
                     if rec.valuation_method == 'fifo':
                         average_cost = sorted_receipts[0].cost
                         current_value = average_cost * sum(receipts.mapped('quantity_remaining'))
@@ -160,6 +168,16 @@ class InventoryItem(models.Model):
                         average_cost = sorted_receipts[-1].cost
                         current_value = average_cost * sum(receipts.mapped('quantity_remaining'))
                     elif rec.valuation_method == 'average':
+                        total_cost_per_value = 0.0
+                        receipts_summation = 0.0
+                        for receipt in sorted_receipts:
+                            receipt_total = receipt.quantity_remaining * receipt.cost
+                            total_cost_per_value += receipt_total
+                            receipts_summation += receipt.quantity_remaining
+                        average_cost = total_cost_per_value / receipts_summation
+                        current_value = average_cost * receipts_summation
+
+                        """
                         first_qty = sorted_receipts[0].quantity_remaining
                         first_value = sorted_receipts[0].cost
                         second_qty = sorted_receipts[-1].quantity_remaining
@@ -167,6 +185,7 @@ class InventoryItem(models.Model):
                         average_cost = ((first_qty * first_value) + (second_qty * second_value)) / (
                                     first_qty + second_qty)
                         current_value = average_cost * (first_qty + second_qty)
+                        """
 
             issues = self.env['inventory.subtraction.line'].search([('item_id', '=', rec.id),
                                                                     ('quantity', '>', 0),

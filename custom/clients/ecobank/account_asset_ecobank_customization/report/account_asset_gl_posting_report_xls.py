@@ -205,6 +205,7 @@ class AssetGlPostingXlsx(AbstractReportXlsx):
                     'accumulated': accumulated,
                     'acc': accumulated,
                     'depr': depreciation,
+
                     },
                 default_format=self.format_tcell_left)
 
@@ -213,6 +214,7 @@ class AssetGlPostingXlsx(AbstractReportXlsx):
             render_space={
                 'acc': self.total_accumulation,
                 'depr': self.total_depreciation,
+                'grand_total':self.total_depreciation,
 
             },
             default_format=self.format_theader_yellow_left)

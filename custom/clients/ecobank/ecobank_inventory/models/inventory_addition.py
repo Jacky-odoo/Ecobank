@@ -10,7 +10,8 @@ class InventoryAddition(models.Model):
     adjustment = fields.Boolean(string='Is Adjustment', default=False)
     reference = fields.Char(string='Reference', readonly=True)
     date = fields.Date(string='Date',
-                       default=fields.Date.today(),
+                       default=False,
+                       states={'draft': [('readonly', False)]},
                        readonly=True)
     addition_lines_ids = fields.One2many(comodel_name='inventory.addition.line',
                                          inverse_name='addition_id',
